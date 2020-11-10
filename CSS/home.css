@@ -1,0 +1,16 @@
+/*top section css code*/
+.top-section {
+  height: 90vh;
+  background-image: url(../images/Fuji_daği_manzara.jpg);
+  background-position: bottom;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+.top-section-img {
+  max-width: 100%;
+  max-height: 100%;
+}*/
