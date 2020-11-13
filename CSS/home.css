@@ -9,8 +9,14 @@
   justify-content: center;
 }
 
+.brand-context {
+  margin-left: 50px;
+  font-family: 'Dancing Script', cursive;
+}
 
-
+.other-links {
+  float:right;
+}
 /* wave CSS*/
 @keyframes move_wave {
     0% {
@@ -22,6 +28,14 @@
     100% {
         transform: translateX(-50%) translateZ(0) scaleY(1)
     }
+}
+
+/*get rid of the extra 100% width from wave*/
+.waveWrapperInner {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
 }
 
 .bgTop {
@@ -39,10 +53,11 @@
     position: absolute;
     left: 0;
     width: 200%;
-    height: 35vh;
+    height: 87vh;
     background-repeat: repeat no-repeat;
     background-position: 0 bottom;
     transform-origin: center bottom;
+
 }
 .waveTop {
     background-size: 50% 100px;
