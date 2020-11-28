@@ -14,9 +14,31 @@
   font-family: 'Dancing Script', cursive;
 }
 
+.nav-name {
+  margin-top: 5px;
+}
+
 .other-links {
   float:right;
 }
+
+.nav-button {
+  margin-top: 5px;
+  margin-right: 20px;
+}
+
+/*Body Content*/
+.blog-content {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-content {
+  padding-top: 50px;
+}
+
 /* wave CSS*/
 @keyframes move_wave {
     0% {
