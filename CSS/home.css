@@ -27,6 +27,29 @@
   margin-right: 20px;
 }
 
+
+#new-blog-content {
+  width:100%;
+}
+
+#new-blog-title {
+  width:100%;
+  margin-bottom: 8px;
+}
+
+.sButton {
+  text-align: center;
+}
+
+.submit-button {
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  width: 100%;
+}
+
+
+
 /*Body Content*/
 .blog-content {
   margin-top: 10px;

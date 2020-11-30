@@ -60,11 +60,22 @@
             </button>
           </div>
           <div class="modal-body">
-            
+            <div class="title">
+              <label for="blog-title"><b>Title:</b></label>
+            </div>
+            <input id="new-blog-title" type="text" placeholder="Please Enter the Title" name="blog-title" required>
+
+            <div class="content">
+              <label class="content-label" for="blog-content"><b>Content:</b></label>
+              <textarea id="new-blog-content" placeholder="Please Enter the Content" name="blog-content" rows="7" cols="50"></textarea>
+            </div>
+
+            <div class="sButton">
+              <button id="new-blog-submit" class="submit-button btn btn-dark" type="submit">Submit</button>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button id="post-button" type="button" class="btn btn-primary">Submit</button>
           </div>
         </div>
       </div>
