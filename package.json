@@ -1,0 +1,24 @@
+{
+  "name": "blogging-engine",
+  "version": "1.0.0",
+  "description": "CSCI 161 Project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hanzhuo-Gong/Blogging-Engine.git"
+  },
+  "author": "Han & Matthew",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hanzhuo-Gong/Blogging-Engine/issues"
+  },
+  "homepage": "https://github.com/Hanzhuo-Gong/Blogging-Engine#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.11.0"
+  }
+}
