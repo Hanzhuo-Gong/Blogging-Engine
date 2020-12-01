@@ -1,12 +1,13 @@
 const express = require('express');
-//const connectDB = require('./DB/connection.js');
+const connectDB = require('./DB/connection.js');
 
 const main = () => {
   const app = express();
   const port = 3000;
 
-  //connectDB();
+  connectDB();
 
+  app.use(express.json());
   //load file from static folder
   app.use(express.static('./static'));
 
