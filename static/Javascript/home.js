@@ -12,5 +12,10 @@ submitButton.addEventListener("click", function() {
 
 //when window load up, need to load all blog contents
 window.onload = () => {
-  
+  fetch('/api/get')
+    .then((response) => (response.ok ? response.json() : Promise.reject()))
+    .then((data) => {
+      console.log("get working");
+      console.log(data);
+    })
 }
