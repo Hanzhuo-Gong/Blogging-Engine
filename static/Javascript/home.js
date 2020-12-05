@@ -1,13 +1,67 @@
 //get data for the post request, will use later
 const allBlogs = document.getElementById("blogs");
-const newTitle = document.getElementById("new-blog-title").value;
-const newContent = document.getElementById("new-blog-content").value;
 const submitButton = document.getElementById("new-blog-submit");
-console.log(submitButton);
+//console.log(submitButton);
 
-//add event listener to the submit button, and post the request to databse
+//Function to add the blog title and content to HTML element
+function addContentToHTML(title, content) {
+  const titleDiv = document.createElement("div");
+  const contentDiv = document.createElement("div");
+
+  //Title element
+  const newATag = document.createElement("a");
+  const newH3 = document.createElement("h3");
+  const h3Content = document.createTextNode(title);
+
+  //Content element
+  const newParagraph = document.createElement("p");
+  const paragraphContent = document.createTextNode(content);
+
+  newATag.href = "#";
+  newATag.classList.add("title-content");
+
+  allBlogs.insertBefore(contentDiv, allBlogs.firstChild);
+  allBlogs.insertBefore(titleDiv, allBlogs.firstChild);
+
+  //append the blog title
+  newH3.appendChild(h3Content);
+  newATag.appendChild(newH3);
+  titleDiv.appendChild(newATag);
+  titleDiv.classList.add("title-content");
+
+  //append the blog content
+  newParagraph.appendChild(paragraphContent);
+  contentDiv.appendChild(newParagraph);
+}
+
+
+//post new blog to databse, and display on it on home page
 submitButton.addEventListener("click", function() {
-  console.log("clicked");
+  const newTitle = document.getElementById("new-blog-title").value;
+  const newContent = document.getElementById("new-blog-content").value;
+
+  //console.log(newTitle);
+  //console.log(newContent);
+  const headers = new Headers();
+  headers.set("content-type", "application/json");
+  fetch('/api/post', {
+    headers,
+    method: "POST",
+    body: JSON.stringify({
+      title: newTitle,
+      content: newContent
+    }),
+  })
+    .then((response) => (response.ok && response.status === 201 ? response.json() : Promise.reject(response.status)))
+    .then((data) => {
+      console.log(data);
+
+      //After the data post to the database, append to the HTML
+      addContentToHTML(data.title, data.content);
+      //Reload the page for user
+      location.reload();
+    })
+    .catch((err) => console.log(err));
 });
 
 //when window load up, need to load all blog contents
@@ -20,7 +74,6 @@ window.onload = () => {
 
       //check if the database is empty, if is empty, display no content
       if (data.length === 0) {
-        //<h3 class="no-content">No Blog Content</h3>
         const newH3 = document.createElement("h3");
         const h3Content = document.createTextNode("No Blog Content");
         newH3.classList.add("no-content");
@@ -30,32 +83,10 @@ window.onload = () => {
       }
       else {
         //After getting the data from database, need to create new element to display the content
-        const titleDiv = document.createElement("div");
-        const contentDiv = document.createElement("div");
+        for (let i = 0; i < data.length; i++) {
+          addContentToHTML(data[i].title, data[i].content);
+        }
 
-        const newATag = document.createElement("a");
-        const newH3 = document.createElement("h3");
-        const h3Content = document.createTextNode(data[0].title);
-        const newParagraph = document.createElement("p");
-        const paragraphContent = document.createTextNode(data[0].content);
-
-
-        newATag.href = "#";
-        newATag.classList.add("title-content");
-        
-        //append the blog title
-        allBlogs.appendChild(titleDiv);
-        newH3.appendChild(h3Content);
-        newATag.appendChild(newH3);
-        titleDiv.appendChild(newATag);
-
-        //append the blog content
-        allBlogs.appendChild(contentDiv);
-        newParagraph.appendChild(paragraphContent);
-        contentDiv.appendChild(newParagraph);
-
-
-        //add the href to all the
       }
 
 

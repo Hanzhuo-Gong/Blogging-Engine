@@ -7,6 +7,7 @@ const postBlog = express.Router();
 
 postBlog.post('/', async (req, res) => {
   //const { reqTitle, reqContent, reqComments } = req.body;
+  console.log(req);
 
   /*
   //for checking
@@ -30,7 +31,7 @@ postBlog.post('/', async (req, res) => {
   newPost.content = req.body.content;
   newPost.comments = req.body.comments;
   let newPostModel = new Blog(newPost);
-  res.json(newPostModel);
+  res.status(201).json(newPostModel);
 });
 
 

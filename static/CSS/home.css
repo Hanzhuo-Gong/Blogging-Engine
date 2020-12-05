@@ -52,7 +52,6 @@
 
 /*Body Content*/
 .blog-content {
-  margin-top: 50px;
   text-align: center;
 }
 
@@ -66,6 +65,10 @@
 
 .title-content:hover {
   color: black;
+}
+
+.title-content {
+  margin-top: 50px;
 }
 
 /* wave CSS*/
