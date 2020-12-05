@@ -7,6 +7,7 @@ const connectDB = async () => {
     useNewUrlParser: true,
     useUnifiedTopology: true });
   console.log('DB has been connected!');
+
 }
 
 //export the connection
