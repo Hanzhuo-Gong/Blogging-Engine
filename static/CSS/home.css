@@ -52,14 +52,23 @@
 
 /*Body Content*/
 .blog-content {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 }
 
 .no-content {
   padding-top: 50px;
+}
+
+.title-content {
+  color: black;
+}
+
+.title-content:hover {
+  color: black;
+}
+
+.title-content {
+  margin-top: 50px;
 }
 
 /* wave CSS*/

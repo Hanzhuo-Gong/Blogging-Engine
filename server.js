@@ -2,10 +2,6 @@ const express = require('express');
 const connectDB = require('./DB/connection.js');
 const fs = require('fs').promises; //delete it if read not working
 
-const getAllBlog = (req, res) => {
-  console.log("get");
-}
-
 const main = () => {
   const app = express();
   const port = 3000;
