@@ -4,9 +4,9 @@ const submitButton = document.getElementById("new-blog-submit");
 //console.log(submitButton);
 
 //Function to add the blog title and content to HTML element
-function addContentToHTML(title, content) {
+function addContentToHTML(title, content, id) {
   const titleDiv = document.createElement("div");
-  const contentDiv = document.createElement("div");
+  //const contentDiv = document.createElement("div");
 
   //Title element
   const newATag = document.createElement("a");
@@ -17,10 +17,11 @@ function addContentToHTML(title, content) {
   const newParagraph = document.createElement("p");
   const paragraphContent = document.createTextNode(content);
 
-  newATag.href = "#";
-  newATag.classList.add("title-content");
+  newATag.href = "./blog.html";
+  newATag.classList.add("a-content");
+  newATag.setAttribute("id", id);
 
-  allBlogs.insertBefore(contentDiv, allBlogs.firstChild);
+  //allBlogs.insertBefore(contentDiv, allBlogs.firstChild);
   allBlogs.insertBefore(titleDiv, allBlogs.firstChild);
 
   //append the blog title
@@ -31,9 +32,10 @@ function addContentToHTML(title, content) {
 
   //append the blog content
   newParagraph.appendChild(paragraphContent);
-  contentDiv.appendChild(newParagraph);
-}
+  //contentDiv.appendChild(newParagraph);
+  titleDiv.appendChild(newParagraph);
 
+}
 
 //post new blog to databse, and display on it on home page
 submitButton.addEventListener("click", function() {
@@ -70,7 +72,8 @@ window.onload = () => {
     .then((response) => (response.ok ? response.json() : Promise.reject()))
     .then((data) => {
       console.log(data);
-      console.log(data[0].title);
+      //console.log(data[0].title);
+      //console.log(data[0]._id);
 
       //check if the database is empty, if is empty, display no content
       if (data.length === 0) {
@@ -84,9 +87,27 @@ window.onload = () => {
       else {
         //After getting the data from database, need to create new element to display the content
         for (let i = 0; i < data.length; i++) {
-          addContentToHTML(data[i].title, data[i].content);
+          addContentToHTML(data[i].title, data[i].content, data[i]._id);
         }
 
+        //add click function to blog title
+        const allBlogsTitle = document.getElementsByClassName("title-content");
+        //console.log(allBlogsTitle);
+
+
+        //add click function to the a tag
+        for(let i = 0; i< allBlogsTitle.length; i++) {
+          allBlogsTitle[i].childNodes[0].addEventListener("click", function() {
+            //store the id to the local storage for single blog to access data
+            localStorage.setItem('id', allBlogsTitle[i].childNodes[0].id);
+
+            //store the data to local storage for single blog to accesss data.
+            //(Not working if the title and content are the same)
+            //localStorage.setItem('title',allBlogsTitle[i].childNodes[0].lastChild.innerHTML);
+            //localStorage.setItem('content', allBlogsTitle[i].childNodes[1].childNodes[0].data);
+          });
+        }
+        
       }
 
 

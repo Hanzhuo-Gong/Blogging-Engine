@@ -14,6 +14,13 @@
   font-family: 'Dancing Script', cursive;
 }
 
+/*fix the nav bar on the top*/
+#navbar {
+  width: 100%;
+  position:fixed;
+  z-index: 20;
+}
+
 .nav-name {
   margin-top: 5px;
 }
@@ -59,16 +66,17 @@
   padding-top: 50px;
 }
 
-.title-content {
+.a-content{
   color: black;
 }
 
-.title-content:hover {
+.a-content:hover {
   color: black;
 }
 
 .title-content {
   margin-top: 50px;
+  color: black;
 }
 
 /* wave CSS*/
