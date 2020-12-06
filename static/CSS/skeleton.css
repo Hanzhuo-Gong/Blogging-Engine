@@ -147,7 +147,7 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
   h3 { font-size: 3.6rem; }
   h4 { font-size: 3.0rem; }
   h5 { font-size: 2.4rem; }
-  h6 { font-size: 1.5rem; }
+  h6 { font-size: 1.8rem; }
 }
 
 p {
@@ -233,7 +233,6 @@ input[type="url"],
 input[type="password"],
 textarea,
 select {
-  height: 38px;
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: #fff;
   border: 1px solid #D1D1D1;

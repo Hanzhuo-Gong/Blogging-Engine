@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Blog = require('../DB/blog.js');
+const Blog = require('../DB/blogSchema.js');
 const getBlogs = express.Router();
 
 getBlogs.get('/', async (req, res) => {

@@ -1,18 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Blog = require('../DB/blog.js');
+const Blog = require('../DB/blogSchema.js');
 const singleBlog = express.Router();
 
+//I tried to call this function, but it never executed
 singleBlog.get('/', async (req, res) => {
-  console.log(req);
-  //Blog.findById(req.params)
-  Blog.findById(req.params, function(err, result) {
+  //console.log(req);
+  Blog.findById(req.query.id, function(err, result) {
     if(err) {
       console.log(err);
     }
     else {
-      //console.log(result);
-      res.json(result);
+      console.log(result);
+      res.status(200).json(result);
     }
   });
 });

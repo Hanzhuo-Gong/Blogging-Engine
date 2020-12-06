@@ -20,10 +20,12 @@ const main = () => {
   app.use('/api/post', require('./API/postBlog.js'));
 
   //A GET endpoint to render a single blog post + templated data
-  app.use('/api/single/:id', require('./API/singleBlog.js'));
+  //A GET endpoint for comments <- This is combine with this GET endpoint
+  app.use('/api/single', require('./API/singleBlog.js'));
+  
   //A POST endpoint for comments
 
-  //A GET endpoint for comments
+
 
   /*
   fs.readFile("https://cloud.mongodb.com/api/atlas/v1.0/groups/BloggingEngine/clusters/Cluster0", "utf-8")

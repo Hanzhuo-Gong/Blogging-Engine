@@ -17,7 +17,7 @@ function addContentToHTML(title, content, id) {
   const newParagraph = document.createElement("p");
   const paragraphContent = document.createTextNode(content);
 
-  newATag.href = "./blog.html";
+  newATag.href = "./blogV2.html";
   newATag.classList.add("a-content");
   newATag.setAttribute("id", id);
 
@@ -107,7 +107,7 @@ window.onload = () => {
             //localStorage.setItem('content', allBlogsTitle[i].childNodes[1].childNodes[0].data);
           });
         }
-        
+
       }
 
 
