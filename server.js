@@ -18,13 +18,15 @@ const main = () => {
 
   //A POST allow user to post new things on the blog (If have time, then do this)
   app.use('/api/post', require('./API/postBlog.js'));
-  //A GET endpoint to render a single blog post + templated data
 
+  //A GET endpoint to render a single blog post + templated data
+  //A GET endpoint for comments <- This is combine with this GET endpoint
+  app.use('/api/single', require('./API/singleBlog.js'));
+  
   //A POST endpoint for comments
 
-  //A GET endpoint for comments
 
-  //get the data from the database
+
   /*
   fs.readFile("https://cloud.mongodb.com/api/atlas/v1.0/groups/BloggingEngine/clusters/Cluster0", "utf-8")
     .then((fileContents) => JSON.parse(fileContents))
