@@ -1,10 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Blog = require('../DB/blog.js');
-const getBlogs = express.Router();
+const singleBlog = express.Router();
 
-getBlogs.get('/', async (req, res) => {
-  Blog.find({}, function(err, result) {
+singleBlog.get('/', async (req, res) => {
+  console.log(req);
+  //Blog.findById(req.params)
+  Blog.findById(req.params, function(err, result) {
     if(err) {
       console.log(err);
     }
@@ -15,4 +17,4 @@ getBlogs.get('/', async (req, res) => {
   });
 });
 
-module.exports = getBlogs;
+module.exports = singleBlog;
