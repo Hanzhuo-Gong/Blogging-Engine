@@ -1,12 +1,56 @@
-//const homeButton = document.getElementById("previous");
+//assign element to variables for later use
 const title = document.getElementById("title");
 const content = document.getElementById("content");
-const comment = document.getElementById("test1");
+//const comment = document.getElementById("test1");
 const comments = document.getElementById("comment-div");
+const submitComment = document.getElementById("comment-submit");
+let noComments = false;
 
-//Load the data from localStorage
+//Load the data from localStorage, so the database know which data to pass
 const blogID = localStorage.getItem('id');
 console.log(blogID);
+
+//Function allow user to post comments
+submitComment.addEventListener("click", function() {
+  //When the submitted button clicked, load the comment that user inputed.
+  const commentContent = document.getElementById("comment").value;
+  //console.log(commentContent);
+
+  //After getting the value, post to the database
+  const headers = new Headers();
+  headers.set("content-type", "application/json");
+  fetch('/api/comment', {
+    headers,
+    method: "POST",
+    body: JSON.stringify({
+      comment: commentContent,
+      id: blogID    //ID is for database to find by id and update comment
+    }),
+  })
+    .then((response) => (response.ok && response.status === 201 ? response.json() : Promise.reject(response.status)))
+    .then((data) => {
+      const dataLength = data.comments.length;
+
+      //After received the data from database, display it to user
+      //Check if the blog have any comments
+      if (noComments) {
+        const h6Content = document.getElementsByClassName("user-name");
+        const paragraphContent = document.getElementsByClassName("comment-content");
+
+        console.log(paragraphContent);
+        //replace the system message to user's comment
+        h6Content[0].innerHTML =  "Anonymous:";
+        paragraphContent[0].innerHTML = data.comments[dataLength-1];
+        noComments = false;
+      }
+      else {
+        createComments("Anonymous:", data.comments[dataLength-1]);
+      }
+
+    })
+})
+
+
 
 /*
 //Home button redirect to home page
@@ -53,12 +97,8 @@ window.onload = () => {
 
       //check if the blog has Comments
       if (data.comments.length === 0) {
-        /*
-        <div class="one-comment">
-          <h6 class="user-name">Username1</h6>
-          <p id="test1" class="comment-content">Sample comment</p>
-        */
         createComments("System Notification:", "Be the first one to leave comment!");
+        noComments = true;
       }
       else {
         for (let i=0; i< data.comments.length; i++) {

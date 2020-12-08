@@ -14,7 +14,7 @@ const main = () => {
   app.use(express.static('./static'));
 
   //A GET endpoint to list all entries with some filters)
-  app.use("/api/get", require('./API/getBlogs.js'));
+  app.use('/api/get', require('./API/getBlogs.js'));
 
   //A POST allow user to post new things on the blog (If have time, then do this)
   app.use('/api/post', require('./API/postBlog.js'));
@@ -22,9 +22,9 @@ const main = () => {
   //A GET endpoint to render a single blog post + templated data
   //A GET endpoint for comments <- This is combine with this GET endpoint
   app.use('/api/single', require('./API/singleBlog.js'));
-  
-  //A POST endpoint for comments
 
+  //A POST endpoint for comments
+  app.use('/api/comment', require('./API/postComment.js'));
 
 
   /*

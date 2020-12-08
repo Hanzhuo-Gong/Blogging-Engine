@@ -7,7 +7,7 @@ const postBlog = express.Router();
 
 postBlog.post('/', async (req, res) => {
   //const { reqTitle, reqContent, reqComments } = req.body;
-  console.log(req);
+  //console.log(req);
 
   /*
   //for checking
