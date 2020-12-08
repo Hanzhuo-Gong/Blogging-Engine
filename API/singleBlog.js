@@ -11,7 +11,7 @@ singleBlog.get('/', async (req, res) => {
       console.log(err);
     }
     else {
-      console.log(result);
+      //console.log(result);
       res.status(200).json(result);
     }
   });
