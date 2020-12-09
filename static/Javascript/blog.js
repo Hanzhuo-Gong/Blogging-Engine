@@ -4,6 +4,7 @@ const content = document.getElementById("content");
 //const comment = document.getElementById("test1");
 const comments = document.getElementById("comment-div");
 const submitComment = document.getElementById("comment-submit");
+const submitButton = document.getElementById("new-blog-submit");
 let noComments = false;
 
 //Load the data from localStorage, so the database know which data to pass
@@ -81,6 +82,36 @@ function createComments(userName, comment) {
   newDiv.appendChild(newParagraph);
   comments.append(newDiv);
 }
+
+
+//post new blog to databse, and display on it on home page
+submitButton.addEventListener("click", function() {
+  const newTitle = document.getElementById("new-blog-title").value;
+  const newContent = document.getElementById("new-blog-content").value;
+
+  //console.log(newTitle);
+  //console.log(newContent);
+  const headers = new Headers();
+  headers.set("content-type", "application/json");
+  fetch('/api/post', {
+    headers,
+    method: "POST",
+    body: JSON.stringify({
+      title: newTitle,
+      content: newContent
+    }),
+  })
+    .then((response) => (response.ok && response.status === 201 ? response.json() : Promise.reject(response.status)))
+    .then((data) => {
+      console.log(data);
+
+      //and reload the page for user
+      window.location.replace("http://localhost:3000/home.html"); //may need to change later, not working if I deploy the website
+      //location.reload();
+    })
+    .catch((err) => console.log(err));
+});
+
 
 window.onload = () => {
   const url = "/api/single?id=" + blogID;

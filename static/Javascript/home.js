@@ -21,6 +21,10 @@ function addContentToHTML(title, content, id) {
   newATag.href = "./blogV2.html";
   newATag.classList.add("a-content");
   newATag.setAttribute("id", id);
+  newATag.classList.add("title-and-content");
+  newParagraph.classList.add("title-and-content");
+  newParagraph.classList.add("float-left");
+
 
   //allBlogs.insertBefore(contentDiv, allBlogs.firstChild);
   allBlogs.insertBefore(titleDiv, allBlogs.firstChild);
