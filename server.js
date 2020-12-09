@@ -1,6 +1,6 @@
 const express = require('express');
 const connectDB = require('./DB/connection.js');
-const fs = require('fs').promises; //delete it if read not working
+const fs = require('fs').promises;
 
 const main = () => {
   const app = express();
@@ -26,14 +26,17 @@ const main = () => {
   //A POST endpoint for comments
   app.use('/api/comment', require('./API/postComment.js'));
 
+  //A API to display statistics of the server
+  app.use('/stats', require('./API/statistics.js'));
 
-  /*
-  fs.readFile("https://cloud.mongodb.com/api/atlas/v1.0/groups/BloggingEngine/clusters/Cluster0", "utf-8")
-    .then((fileContents) => JSON.parse(fileContents))
-    .then((data) => {
-      console.log(data);
-    });
-  */
+  //write a file to record the log
+  const dateObj = new Date();
+
+  const initialMessage = "Server log for: " + dateObj +"\n";
+  //console.log(initialMessage);
+  fs.writeFile('./DB/log.txt', initialMessage, (err) => {
+    if (err) throw err;
+  })
 
   app.listen(port, () => {
       console.log(`Server started on http://localhost:${port}`);

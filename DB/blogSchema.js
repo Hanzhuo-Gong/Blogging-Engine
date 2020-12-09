@@ -19,6 +19,6 @@ const Blog = mongoose.model('blog', blog);
 
 //Create a new collection to store all blog data
 Blog.createCollection().then(function(collection) {
-  console.log("blog collection created");
+  //console.log("blog collection created");
 })
 module.exports = Blog;

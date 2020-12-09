@@ -21,6 +21,10 @@ function addContentToHTML(title, content, id) {
   newATag.href = "./blogV2.html";
   newATag.classList.add("a-content");
   newATag.setAttribute("id", id);
+  newATag.classList.add("title-and-content");
+  newParagraph.classList.add("title-and-content");
+  newParagraph.classList.add("float-left");
+
 
   //allBlogs.insertBefore(contentDiv, allBlogs.firstChild);
   allBlogs.insertBefore(titleDiv, allBlogs.firstChild);
@@ -72,7 +76,7 @@ window.onload = () => {
   fetch('/api/get')
     .then((response) => (response.ok ? response.json() : Promise.reject()))
     .then((data) => {
-      console.log(data);
+      //console.log(data);
       //console.log(data[0].title);
       //console.log(data[0]._id);
 
@@ -83,7 +87,7 @@ window.onload = () => {
         newH3.classList.add("no-content");
 
         newH3.appendChild(h3Content);
-        allBlogs.appendChild(newH3);     //Need to come back and test later~~~~~~~
+        allBlogs.appendChild(newH3);
       }
       else {
         //After getting the data from database, need to create new element to display the content

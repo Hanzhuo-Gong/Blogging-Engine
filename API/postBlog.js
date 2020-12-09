@@ -2,14 +2,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Blog = require('../DB/blogSchema.js');
+const fs = require('fs').promises;
+const path = require("path");
+const file = path.resolve(__dirname, "../DB/log.txt");
 const postBlog = express.Router();
 
 //for log
 let numberOfPost = 0;
 
 postBlog.post('/', async (req, res) => {
-  //const { reqTitle, reqContent, reqComments } = req.body;
-  //console.log(req);
 
   /*
   //for checking
@@ -23,11 +24,13 @@ postBlog.post('/', async (req, res) => {
     content: req.body.content,
     comments: req.body.comments
   }]);
-  //await newPostModel.save();
-  //console.log(newPostModel);
-  console.log("Post Successfully");
+  
   numberOfPost++;
-  console.log("Total number of POST blog is: ", numberOfPost);
+  const message = "POST request triggered, Total number of POST is:" + numberOfPost + "\n";
+  console.log(message);
+  fs.appendFile(file, message, (err) => {
+    if (err) throw err;
+  })
 
   //data send back to user
   let newPost = {};

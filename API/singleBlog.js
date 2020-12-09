@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const fs = require('fs').promises;
 const Blog = require('../DB/blogSchema.js');
+const path = require("path");
+const file = path.resolve(__dirname, "../DB/log.txt");
 const singleBlog = express.Router();
 
 //for log
@@ -15,7 +18,11 @@ singleBlog.get('/', async (req, res) => {
     else {
       //console.log(result);
       numberOfSingleBlog++;
-      console.log("Total number of GET Single Blog is: ",numberOfSingleBlog);
+      const message = "GET single blog request triggered, Total number of GET single is:" + numberOfSingleBlog + "\n";
+      console.log(message);
+      fs.appendFile(file, message, (err) => {
+        if (err) throw err;
+      })
       res.status(200).json(result);
     }
   });
