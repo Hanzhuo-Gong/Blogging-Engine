@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 const Blog = require('../DB/blogSchema.js');
 const postBlog = express.Router();
 
+//for log
+let numberOfPost = 0;
 
 postBlog.post('/', async (req, res) => {
   //const { reqTitle, reqContent, reqComments } = req.body;
@@ -24,6 +26,8 @@ postBlog.post('/', async (req, res) => {
   //await newPostModel.save();
   //console.log(newPostModel);
   console.log("Post Successfully");
+  numberOfPost++;
+  console.log("Total number of POST blog is: ", numberOfPost);
 
   //data send back to user
   let newPost = {};

@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const Blog = require('../DB/blogSchema.js');
 const postComment = express.Router();
 
+//for log
+let numberOfPostComment = 0;
+
 postComment.post("/", async(req, res) => {
   //console.log(req);
   const userComment = req.body.comment;
@@ -17,6 +20,8 @@ postComment.post("/", async(req, res) => {
       result.save();
       //console.log(result);
       console.log("post comment successfully");
+      numberOfPostComment++;
+      console.log("Number of comment posted: ", numberOfPostComment);
       res.status(201).send(result);
     }
   })
