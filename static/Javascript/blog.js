@@ -9,7 +9,7 @@ let noComments = false;
 
 //Load the data from localStorage, so the database know which data to pass
 const blogID = localStorage.getItem('id');
-console.log(blogID);
+//console.log(blogID);
 
 //Function allow user to post comments
 submitComment.addEventListener("click", function() {
@@ -124,7 +124,7 @@ window.onload = () => {
       //After get the title, content and comments, display the data on the page
       title.innerHTML = data.title;
       content.innerHTML = data.content;
-      console.log(data.comments);
+      //console.log(data.comments);
 
       //check if the blog has Comments
       if (data.comments.length === 0) {

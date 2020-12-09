@@ -12,6 +12,8 @@ http://localhost:3000/api/single This API will return a single blog information.
 
 http://localhost:3000/api/comment This API will post a comment to a single blog. ID and comment will be needed on the JSON object
 
+http://localhost:3000/stats This API will display the log of the server
+
 # Sample curl commends:
 /api/get: curl localhost:3000/api/get
 
@@ -21,4 +23,8 @@ http://localhost:3000/api/comment This API will post a comment to a single blog.
 
 /api/comment: curl -H "content-type: application/json" -d '{"comment": "sample comment","id":"5fcf11df631eba3993faca6b"}' localhost:3000/api/comment
 
-# Stats will be updated later
+/stats: curl localhost:3000/stats
+
+# Stats Note:
+The localhost:3000/stats will display the data without new line, haven't find out a way to solve that. Please use the curl command or take a look under the file
+DB/log.txt

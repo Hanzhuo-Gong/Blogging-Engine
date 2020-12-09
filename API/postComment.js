@@ -1,6 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const fs = require('fs').promises;
 const Blog = require('../DB/blogSchema.js');
+const path = require("path");
+const file = path.resolve(__dirname, "../DB/log.txt");
 const postComment = express.Router();
 
 //for log
@@ -19,9 +22,12 @@ postComment.post("/", async(req, res) => {
       result.comments.push(userComment);
       result.save();
       //console.log(result);
-      console.log("post comment successfully");
       numberOfPostComment++;
-      console.log("Number of comment posted: ", numberOfPostComment);
+      const message = "POST comment triggered, Total number of POST comment is:" + numberOfPostComment + "\n";
+      console.log(message);
+      fs.appendFile(file, message, (err) => {
+        if (err) throw err;
+      })
       res.status(201).send(result);
     }
   })
