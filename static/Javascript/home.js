@@ -3,6 +3,7 @@ const allBlogs = document.getElementById("blogs");
 const submitButton = document.getElementById("new-blog-submit");
 //console.log(submitButton);
 
+//let numberOfPostComment = require("../API/blogSchema.js")
 //Function to add the blog title and content to HTML element
 function addContentToHTML(title, content, id) {
   const titleDiv = document.createElement("div");
