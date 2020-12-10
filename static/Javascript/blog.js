@@ -49,6 +49,7 @@ submitComment.addEventListener("click", function() {
       }
 
     })
+    .catch((err) => console.log(err));
 })
 
 
@@ -137,4 +138,5 @@ window.onload = () => {
         }
       }
     })
+    .catch((err) => console.log(err));
 }
