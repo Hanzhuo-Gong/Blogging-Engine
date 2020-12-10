@@ -112,9 +112,7 @@ window.onload = () => {
             //localStorage.setItem('content', allBlogsTitle[i].childNodes[1].childNodes[0].data);
           });
         }
-
       }
-
-
     })
+    .catch((err) => console.log(err));
 }
