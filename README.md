@@ -28,3 +28,6 @@ http://localhost:3000/stats This API will display the log of the server
 # Stats Note:
 The localhost:3000/stats will display the data without new line, haven't find out a way to solve that. Please use the curl command or take a look under the file
 DB/log.txt
+
+# Error State:
+Need to update and give show customer some messages
